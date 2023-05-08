@@ -3,10 +3,10 @@ sequenceDiagram
     participant browser
     participant server
 
-        Note right of browser: The browser sends data as the body of the post Request
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note      
+        Note right of browser: The browser sends data as the body of the post Request
     activate server
-        Note over server: The server creates a new note object, and adds it to an array called notes, then returns a 302 response
+        Note right of server: The server creates a new note object, and adds it to an array called notes
     server-->>browser: HTTP 302 Redirect
     deactivate server
 
