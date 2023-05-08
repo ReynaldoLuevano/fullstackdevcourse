@@ -3,12 +3,16 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
-    server-->>browser: HTML document
+    
+    server-->>browser: HTTP 302 Redirect
+    
+    Note right of server: The server creates a new note object, and adds it to an array called notes, then returns a 302 response
+
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    browser->>server: GET /exampleapp/notes
     activate server
     server-->>browser: the css file
     deactivate server
